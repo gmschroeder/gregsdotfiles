@@ -1,0 +1,35 @@
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
+
+set number
+set incsearch
+set hlsearch
+
+"default indent settings (overridden for some languages below)
+set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+"turns on all syntactical autocomplete
+set omnifunc=syntaxcomplete#Complete
+"highlight longest matching term in autcomplete
+set completeopt+=longest
+
+"Custom configuration files by language (set w file extension)
+autocmd FileType html setlocal shiftwidth=4 tabstop=4
+autocmd FileType javascript setlocal shiftwidth=4 tabstop=4
+autocmd FileType css setlocal shiftwidth=4 tabstop=4
+
+"Sets colors of folds bg & text
+hi Folded ctermbg=yellow
+hi Folded ctermfg=black
+
+"set NERDTree to open on the right side
+let g:NERDTreeWinPos = "left"
+
+"NERDTree opens by default
+autocmd VimEnter * NERDTree
+
+"close nerdtree (along w any other open buffer) on any :q command
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+
+colorscheme evening
